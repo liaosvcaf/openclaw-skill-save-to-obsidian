@@ -67,3 +67,24 @@ All content saved to Obsidian MUST follow these rules:
 - Uses existing SSH key auth (no password)
 - Target: remote-host → Obsidian vault location
 - Files sync via iCloud automatically (if vault is in iCloud folder)
+
+## Configuration
+
+This skill reads SSH and vault configuration from your workspace TOOLS.md:
+
+| Variable | Description | Where to set |
+|----------|-------------|--------------|
+| SSH host | Hostname/IP of the remote machine hosting the Obsidian vault | TOOLS.md (e.g., `myserver.local`) |
+| SSH user | Username on the remote machine | TOOLS.md (e.g., `your-username`) |
+| SSH key path | Path to SSH private key (default: `~/.ssh/id_rsa`) | TOOLS.md |
+| Vault path | Absolute path to Obsidian vault on remote machine | TOOLS.md (e.g., `~/Obsidian/MyVault/`) |
+
+**Example TOOLS.md entry:**
+```
+## Obsidian Remote Vault
+- SSH host: myserver.local
+- SSH user: your-username
+- Vault path: ~/Obsidian/MyVault/
+```
+
+No API keys or tokens required — uses SSH key authentication only.
