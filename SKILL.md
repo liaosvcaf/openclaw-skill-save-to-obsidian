@@ -62,6 +62,28 @@ All content saved to Obsidian MUST follow these rules:
 - Use YAML frontmatter if metadata is needed
 - Keep filenames kebab-case (no spaces) for cross-platform compatibility
 
+## Agent Owner
+This skill is executed by the main OpenClaw agent session. The `save-to-obsidian.sh` script
+runs as a shell command via the exec tool. No sub-agents are spawned. iCloud sync is handled
+automatically after file transfer — no agent action needed.
+
+## Success Criteria
+Save succeeds when:
+1. scp exits with code 0
+2. File appears in vault directory with correct filename
+3. iCloud sync propagates the file (typically 1-2 minutes; not verified by skill)
+
+Failure conditions: SSH unreachable, vault path does not exist, disk full, filename
+contains characters invalid for iCloud sync (handled by sanitization in script).
+
+## Edge Cases
+- **SSH failure**: script exits with error message and non-zero code; agent should report and stop
+- **Duplicate filename**: overwrites silently — scp does not warn; user must check if overwrite is desired
+- **Special characters in filename**: sanitized by script (spaces → hyphens, invalid chars stripped)
+- **Empty content**: scp will transfer a 0-byte file; not an error but should be flagged
+- **No clear title**: if content has no H1 header, agent should prompt user for filename before saving
+- **iCloud sync delay**: file appears in vault within 1-2 min; if not visible after 5 min, check iCloud status
+
 ## Notes
 
 - Uses existing SSH key auth (no password)
