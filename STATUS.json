@@ -1,0 +1,23 @@
+{
+  "_generated": "Auto-generated from root STATUS.json. Do not edit manually.",
+  "skill": "save-to-obsidian",
+  "stage": "competitive",
+  "auditScore": 70,
+  "auditDate": "2026-02-17",
+  "competitivePosition": "behind",
+  "competitiveAction": "maintain",
+  "tier": "generic",
+  "priority": "low",
+  "lastRefactored": "2026-02-17",
+  "testsPassing": null,
+  "opsecClean": true,
+  "notes": "Released, actively used. SCP approach works for user setup. No further investment. Views: 16",
+  "id": "AE",
+  "released": true,
+  "clawhub": "https://clawhub.ai/chunhualiao/save-to-obsidian",
+  "compositionRole": "standalone",
+  "auditRubric": "rubric-audit-b6",
+  "auditMaxScore": 90,
+  "clawhubVersion": "1.1.0",
+  "clawhubSlug": "save-to-obsidian"
+}
